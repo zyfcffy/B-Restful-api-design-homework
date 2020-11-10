@@ -22,7 +22,14 @@ public class GroupRepository {
         }
     }
 
-    public List<Group> findAll(){
+    public List<Group> findAll() {
         return groupList;
+    }
+
+    public Group updateGroupName(int id, String name) {
+        int INDEX_GAP = 1;
+        Group group = groupList.get(id - INDEX_GAP);
+        group.setName(name);
+        return group;
     }
 }

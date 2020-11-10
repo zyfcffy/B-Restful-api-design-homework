@@ -51,5 +51,7 @@ public class GroupService {
         return groups;
     }
 
-
+    public Group updateGroupName(int id, String name) {
+        return groupRepository.updateGroupName(id, name);
+    }
 }
