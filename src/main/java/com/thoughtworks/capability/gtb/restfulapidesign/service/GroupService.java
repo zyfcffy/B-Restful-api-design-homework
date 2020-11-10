@@ -21,8 +21,35 @@ public class GroupService {
         this.studentRepository = studentRepository;
     }
 
-    public List<Group> getGroups(){
-        return groupRepository.findAll();
+    public List<Group> getGroups() {
+        List<Student> studentList = studentRepository.findAll();
+        List<Student> students = getShuffleStudentList(studentList);
+        List<Group> groups = groupRepository.findAll();
+        return resetGroup(students, groups);
     }
+
+    private List<Student> getShuffleStudentList(List<Student> studentList) {
+        List<Student> sortedStudent = new ArrayList<>(studentList);
+        Collections.shuffle(sortedStudent);
+        return sortedStudent;
+    }
+
+    private List<Group> resetGroup(List<Student> students, List<Group> groups) {
+        int startIndex = 0;
+        int amountInEveryTeam = students.size() / groups.size();
+        int remain = students.size() % groups.size();
+        for (Group group : groups) {
+            if (remain > 0) {
+                group.setStudentList(students.subList(startIndex, startIndex + amountInEveryTeam + 1));
+                remain--;
+                startIndex = startIndex + amountInEveryTeam + 1;
+            } else {
+                group.setStudentList(students.subList(startIndex, startIndex + amountInEveryTeam));
+                startIndex = startIndex + amountInEveryTeam;
+            }
+        }
+        return groups;
+    }
+
 
 }
