@@ -17,7 +17,7 @@ public class StudentService {
     public List<Student> getStudentList(String gender) {
         if (gender == null) {
             return studentRepository.findAll();
-        }else {
+        } else {
             return studentRepository.findByGender(gender);
         }
     }
@@ -28,5 +28,9 @@ public class StudentService {
 
     public void deleteById(int id) {
         studentRepository.deleteStudent(id);
+    }
+
+    public Student getStudentById(int id) {
+        return studentRepository.findById(id);
     }
 }

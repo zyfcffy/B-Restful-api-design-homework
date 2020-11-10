@@ -33,4 +33,8 @@ public class StudentRepository {
     public List<Student> findByGender(String gender) {
         return studentList.stream().filter(student -> student.getGender().equals(gender)).collect(Collectors.toList());
     }
+
+    public Student findById(int id) {
+        return studentList.get(id - INDEX_GAP);
+    }
 }
