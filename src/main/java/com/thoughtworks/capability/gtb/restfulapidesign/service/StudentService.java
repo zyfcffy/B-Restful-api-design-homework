@@ -14,11 +14,15 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public List<Student> getStudentList(){
+    public List<Student> getStudentList() {
         return studentRepository.findAll();
     }
 
-    public Student addStudent(Student student){
+    public Student addStudent(Student student) {
         return studentRepository.addStudent(student);
+    }
+
+    public void deleteById(int id) {
+        studentRepository.deleteStudent(id);
     }
 }

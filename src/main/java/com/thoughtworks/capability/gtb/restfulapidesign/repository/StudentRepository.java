@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 public class StudentRepository {
     private final List<Student> studentList = new ArrayList<>();
 
+    private final int INDEX_GAP = 1;
+
     public List<Student> findAll() {
         return studentList;
     }
@@ -21,6 +23,10 @@ public class StudentRepository {
         int IdIncStep = 1;
         student.setId(id.addAndGet(IdIncStep));
         studentList.add(student);
-        return studentList.get(student.getId()-1);
+        return studentList.get(student.getId() - INDEX_GAP);
+    }
+
+    public void deleteStudent(int id) {
+        studentList.remove(id - INDEX_GAP);
     }
 }

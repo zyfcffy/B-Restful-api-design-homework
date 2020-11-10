@@ -18,13 +18,19 @@ public class StudentController {
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<Student> getStudentList(){
+    public List<Student> getStudentList() {
         return studentService.getStudentList();
     }
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public Student addStudent(@RequestBody Student student){
+    public Student addStudent(@RequestBody Student student) {
         return studentService.addStudent(student);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable int id) {
+        studentService.deleteById(id);
     }
 }
