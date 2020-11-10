@@ -37,4 +37,12 @@ public class StudentRepository {
     public Student findById(int id) {
         return studentList.get(id - INDEX_GAP);
     }
+
+    public Student updateById(int id, Student newStudent) {
+        Student student = studentList.get(id - INDEX_GAP);
+        student.setGender(newStudent.getGender());
+        student.setName(newStudent.getName());
+        student.setNote(newStudent.getNote());
+        return student;
+    }
 }

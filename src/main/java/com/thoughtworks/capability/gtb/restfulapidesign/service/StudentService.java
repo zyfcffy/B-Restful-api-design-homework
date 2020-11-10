@@ -33,4 +33,8 @@ public class StudentService {
     public Student getStudentById(int id) {
         return studentRepository.findById(id);
     }
+
+    public Student updateStudentById(int id, Student newStudent) {
+        return studentRepository.updateById(id, newStudent);
+    }
 }

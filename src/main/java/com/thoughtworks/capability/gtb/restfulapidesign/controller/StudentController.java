@@ -37,4 +37,9 @@ public class StudentController {
     public Student getStudentById(@PathVariable int id){
         return studentService.getStudentById(id);
     }
+
+    @PutMapping("/{id}")
+    public Student updateStudentById(@PathVariable int id, @RequestBody Student newStudent){
+        return studentService.updateStudentById(id, newStudent);
+    }
 }
