@@ -29,4 +29,8 @@ public class StudentRepository {
     public void deleteStudent(int id) {
         studentList.remove(id - INDEX_GAP);
     }
+
+    public List<Student> findByGender(String gender) {
+        return studentList.stream().filter(student -> student.getGender().equals(gender)).collect(Collectors.toList());
+    }
 }

@@ -18,8 +18,8 @@ public class StudentController {
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<Student> getStudentList() {
-        return studentService.getStudentList();
+    public List<Student> getStudentList(@RequestParam(name = "gender", required = false) String gender) {
+        return studentService.getStudentList(gender);
     }
 
     @PostMapping()
@@ -33,4 +33,5 @@ public class StudentController {
     public void deleteById(@PathVariable int id) {
         studentService.deleteById(id);
     }
+
 }

@@ -14,8 +14,12 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public List<Student> getStudentList() {
-        return studentRepository.findAll();
+    public List<Student> getStudentList(String gender) {
+        if (gender == null) {
+            return studentRepository.findAll();
+        }else {
+            return studentRepository.findByGender(gender);
+        }
     }
 
     public Student addStudent(Student student) {
